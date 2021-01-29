@@ -16,6 +16,7 @@ public class Dashboard {
   @Column(name = "dashboard_id")
   private Long id;
 
+  @Column(spannerTypeMaxLength = 255)
   private String title;
 
   @Embedded

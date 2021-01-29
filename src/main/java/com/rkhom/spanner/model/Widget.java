@@ -17,8 +17,10 @@ public class Widget {
   @Column(name = "dashboard_id")
   private Long dashboardId;
 
+  @Column(spannerTypeMaxLength = 255)
   private String title;
 
+  @Column(spannerTypeMaxLength = 30)
   private WidgetType type;
 
 }

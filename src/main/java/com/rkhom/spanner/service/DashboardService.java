@@ -21,6 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Service for performing CRUD operations with dashboards.
+ */
 @Service
 @RequiredArgsConstructor
 public class DashboardService {
