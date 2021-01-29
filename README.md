@@ -96,7 +96,7 @@ PUT http://localhost:8099/api/dashboards
 
 ##### Response body (ID of the updated dashboard)
 ```
-1611933236227
+1611857587973
 ```
 
 #
