@@ -1,0 +1,22 @@
+{
+  "title": "Dashboard 1",
+  "id": 1,
+  "dateRange": {
+    "startDate": "2020-01-01T00:00:00Z",
+    "endDate": "2020-12-31T23:59:59Z"
+  },
+  "widgets": [
+    {
+      "id": 101,
+      "dashboardId": 1,
+      "title": "Widget 101",
+      "type": "PIE_CHART"
+    },
+    {
+      "id": 100500,
+      "dashboardId": 1,
+      "title": "Updated widget 102",
+      "type": "CHART"
+    }
+  ]
+}

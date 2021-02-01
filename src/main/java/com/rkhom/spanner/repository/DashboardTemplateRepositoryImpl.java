@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class DashboardTemplateRepositoryImpl implements TemplateRepository<Dashboard, Long> {
 
-  private static final String FIND_BY_ID_QUERY_FILE = "find_dashboard_by_id.sql";
+  private static final String FIND_BY_ID_QUERY_FILE = "sql/find_dashboard_by_id.sql";
 
   private static final String DASHBOARD_ID = "dashboardId";
 

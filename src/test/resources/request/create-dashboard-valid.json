@@ -1,0 +1,17 @@
+{
+  "title": "new dashboard",
+  "dateRange": {
+    "startDate": "2020-01-01T00:00:00Z",
+    "endDate": "2020-12-31T23:59:59Z"
+  },
+  "widgets": [
+    {
+      "title": "Widget 1",
+      "type": "PROGRESS_BAR"
+    },
+    {
+      "title": "Widget 2",
+      "type": "CHART"
+    }
+  ]
+}

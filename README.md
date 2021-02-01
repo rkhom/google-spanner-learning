@@ -5,6 +5,7 @@
 2. Maven 3+
 3. Google Cloud Platform Account
 4. An existing instance of Spanner database on GCP
+5. Docker (for integration tests)
 
 ### Setup
 1. Open GCP SDK console and make sure you are authenticated.

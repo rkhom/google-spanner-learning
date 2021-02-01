@@ -26,9 +26,9 @@ import org.springframework.data.util.ClassTypeInformation;
 
 public class DdlServiceTest {
 
-  private static final String DDL_CREATION_FILE = "schema.sql";
+  private static final String DDL_CREATION_FILE = "sql/schema.sql";
 
-  private static final String DDL_DROPPING_FILE = "cleanup.sql";
+  private static final String DDL_DROPPING_FILE = "sql/cleanup.sql";
 
   @Mock
   private SpannerDatabaseAdminTemplate spannerDatabaseAdminTemplate;
