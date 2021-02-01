@@ -4,9 +4,7 @@ import com.rkhom.spanner.model.Dashboard;
 import com.rkhom.spanner.model.Widget;
 import com.rkhom.spanner.repository.DashboardRepository;
 import com.rkhom.spanner.repository.WidgetRepository;
-import java.time.Instant;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,6 +27,8 @@ public class DashboardService {
 
   private final WidgetRepository widgetRepository;
 
+  private final IdGenerator idGenerator;
+
   public Dashboard findDashboardById(Long dashboardId) {
     return dashboardRepository.findById(dashboardId)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -40,7 +40,7 @@ public class DashboardService {
   }
 
   public Long createDashboard(Dashboard dashboard) {
-    dashboard.setId(Instant.now().toEpochMilli());
+    dashboard.setId(idGenerator.generateDashboardId());
     fillNewWidgetIds(dashboard);
 
     return dashboardRepository.save(dashboard).getId();
@@ -92,7 +92,7 @@ public class DashboardService {
     dashboard.getWidgets().stream()
         .filter(widget -> widget.getId() == null)
         .forEach(widget -> {
-          widget.setId(ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE));
+          widget.setId(idGenerator.generateWidgetId());
           widget.setDashboardId(dashboard.getId());
         });
   }

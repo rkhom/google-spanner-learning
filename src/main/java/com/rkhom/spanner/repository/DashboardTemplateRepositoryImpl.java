@@ -5,19 +5,15 @@ import com.google.cloud.spring.data.spanner.core.SpannerPageableQueryOptions;
 import com.google.cloud.spring.data.spanner.core.SpannerQueryOptions;
 import com.google.cloud.spring.data.spanner.core.SpannerTemplate;
 import com.rkhom.spanner.model.Dashboard;
-import java.io.IOException;
-import java.nio.file.Files;
+import com.rkhom.spanner.utils.FileUtils;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 
 @Repository("dashboardRepositoryImpl")
 @RequiredArgsConstructor
 public class DashboardTemplateRepositoryImpl implements TemplateRepository<Dashboard, Long> {
-
-  private static final String IO_ERROR = "Cannot read file %s.";
 
   private static final String FIND_BY_ID_QUERY_FILE = "find_dashboard_by_id.sql";
 
@@ -27,14 +23,8 @@ public class DashboardTemplateRepositoryImpl implements TemplateRepository<Dashb
 
   @Override
   public Optional<Dashboard> findById(Long id) {
-    String query;
-    try {
-      query = Files.readString(new ClassPathResource(FIND_BY_ID_QUERY_FILE).getFile().toPath());
-    } catch (IOException e) {
-      throw new IllegalStateException(String.format(IO_ERROR, FIND_BY_ID_QUERY_FILE), e);
-    }
-
-    Statement findByIdStatement = Statement.newBuilder(query)
+    Statement findByIdStatement = Statement
+        .newBuilder(FileUtils.readFileAsString(FIND_BY_ID_QUERY_FILE))
         .bind(DASHBOARD_ID)
         .to(id)
         .build();

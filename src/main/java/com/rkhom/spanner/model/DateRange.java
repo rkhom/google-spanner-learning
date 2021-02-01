@@ -3,9 +3,11 @@ package com.rkhom.spanner.model;
 import com.google.cloud.spring.data.spanner.core.mapping.Column;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class DateRange {
 
   @ApiModelProperty(required = true)
