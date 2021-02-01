@@ -58,8 +58,7 @@ public class DashboardsIntegrationTest extends AbstractIntegrationTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content(requestBody))
         .andExpect(status().is2xxSuccessful())
-        .andExpect(content().string(matchesPattern(DASHBOARD_ID_PATTERN)))
-        .andReturn();
+        .andExpect(content().string(matchesPattern(DASHBOARD_ID_PATTERN)));
   }
 
   @Test
@@ -70,8 +69,7 @@ public class DashboardsIntegrationTest extends AbstractIntegrationTest {
     mockMvc.perform(post(DASHBOARDS_ENDPOINT)
         .contentType(MediaType.APPLICATION_JSON)
         .content(requestBody))
-        .andExpect(status().is4xxClientError())
-        .andReturn();
+        .andExpect(status().is4xxClientError());
   }
 
   @Test
@@ -82,8 +80,7 @@ public class DashboardsIntegrationTest extends AbstractIntegrationTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content(requestBody))
         .andExpect(status().is2xxSuccessful())
-        .andExpect(content().string(EXISTING_DASHBOARD_ID))
-        .andReturn();
+        .andExpect(content().string(EXISTING_DASHBOARD_ID));
   }
 
   @Test
@@ -93,8 +90,7 @@ public class DashboardsIntegrationTest extends AbstractIntegrationTest {
     mockMvc.perform(put(DASHBOARDS_ENDPOINT)
         .contentType(MediaType.APPLICATION_JSON)
         .content(requestBody))
-        .andExpect(status().is4xxClientError())
-        .andReturn();
+        .andExpect(status().is4xxClientError());
   }
 
   @Test
@@ -103,15 +99,13 @@ public class DashboardsIntegrationTest extends AbstractIntegrationTest {
 
     mockMvc.perform(get(DASHBOARDS_ENDPOINT_WITH_ID, EXISTING_DASHBOARD_ID))
         .andExpect(status().is2xxSuccessful())
-        .andExpect(content().string(responseBody))
-        .andReturn();
+        .andExpect(content().string(responseBody));
   }
 
   @Test
   void getDashboard_shouldReturnBadRequestStatus_whenDashboardDoesNotExist() throws Exception {
     mockMvc.perform(get(DASHBOARDS_ENDPOINT_WITH_ID, MISSING_DASHBOARD_ID))
-        .andExpect(status().is4xxClientError())
-        .andReturn();
+        .andExpect(status().is4xxClientError());
   }
 
   @Test
@@ -120,22 +114,19 @@ public class DashboardsIntegrationTest extends AbstractIntegrationTest {
 
     mockMvc.perform(get(DASHBOARDS_ENDPOINT))
         .andExpect(status().is2xxSuccessful())
-        .andExpect(content().string(responseBody))
-        .andReturn();
+        .andExpect(content().string(responseBody));
   }
 
   @Test
   void deleteDashboard_shouldDeleteDashboard_whenDashboardExists() throws Exception {
     mockMvc.perform(delete(DASHBOARDS_ENDPOINT_WITH_ID, EXISTING_DASHBOARD_ID))
-        .andExpect(status().is2xxSuccessful())
-        .andReturn();
+        .andExpect(status().is2xxSuccessful());
   }
 
   @Test
   void deleteDashboard_shouldReturnBadRequestStatus_whenDashboardDoesNotExist() throws Exception {
     mockMvc.perform(delete(DASHBOARDS_ENDPOINT_WITH_ID, MISSING_DASHBOARD_ID))
-        .andExpect(status().is4xxClientError())
-        .andReturn();
+        .andExpect(status().is4xxClientError());
   }
 
 }

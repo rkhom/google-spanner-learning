@@ -17,7 +17,7 @@ public class DdlIntegrationTest extends AbstractIntegrationTest {
 
   @Test
   void createTablesEndpoint_shouldCreateTables() throws Exception {
-    mockMvc.perform(post(DDL_ENDPOINT)).andExpect(status().is2xxSuccessful()).andReturn();
+    mockMvc.perform(post(DDL_ENDPOINT)).andExpect(status().is2xxSuccessful());
 
     assertTrue(spannerDatabaseAdminTemplate.tableExists(DASHBOARDS_TABLE));
     assertTrue(spannerDatabaseAdminTemplate.tableExists(WIDGETS_TABLE));
@@ -29,7 +29,7 @@ public class DdlIntegrationTest extends AbstractIntegrationTest {
   void dropTablesEndpoint_shouldDropTables() throws Exception {
     createTables();
 
-    mockMvc.perform(delete(DDL_ENDPOINT)).andExpect(status().is2xxSuccessful()).andReturn();
+    mockMvc.perform(delete(DDL_ENDPOINT)).andExpect(status().is2xxSuccessful());
 
     assertFalse(spannerDatabaseAdminTemplate.tableExists(DASHBOARDS_TABLE));
     assertFalse(spannerDatabaseAdminTemplate.tableExists(WIDGETS_TABLE));
