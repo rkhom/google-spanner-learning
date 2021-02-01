@@ -5,6 +5,7 @@ import com.rkhom.spanner.model.Dashboard;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DashboardRepository extends SpannerRepository<Dashboard, Long> {
+public interface DashboardRepository extends SpannerRepository<Dashboard, Long>,
+    TemplateRepository<Dashboard, Long> {
 
 }

@@ -6,7 +6,7 @@ import com.rkhom.spanner.service.DashboardService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
-import lombok.NonNull;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +28,7 @@ public class DashboardController {
 
   @GetMapping("/{dashboardId}")
   @ApiOperation(value = "Return dashboard with the given ID")
-  public ResponseEntity<Dashboard> getDashboard(@PathVariable @NonNull Long dashboardId) {
+  public ResponseEntity<Dashboard> getDashboard(@PathVariable Long dashboardId) {
     return ResponseEntity.ok(dashboardService.findDashboardById(dashboardId));
   }
 
@@ -40,19 +40,19 @@ public class DashboardController {
 
   @PostMapping
   @ApiOperation(value = "Create new dashboard")
-  public ResponseEntity<Long> createDashboard(@RequestBody Dashboard dashboard) {
+  public ResponseEntity<Long> createDashboard(@RequestBody @Valid Dashboard dashboard) {
     return ResponseEntity.ok(dashboardService.createDashboard(dashboard));
   }
 
   @PutMapping
   @ApiOperation(value = "Update existing dashboard")
-  public ResponseEntity<Long> updateDashboard(@RequestBody Dashboard dashboard) {
+  public ResponseEntity<Long> updateDashboard(@RequestBody @Valid Dashboard dashboard) {
     return ResponseEntity.ok(dashboardService.updateDashboard(dashboard));
   }
 
   @DeleteMapping("/{dashboardId}")
   @ApiOperation(value = "Delete dashboard with the given ID")
-  public ResponseEntity<?> deleteDashboard(@PathVariable @NonNull Long dashboardId) {
+  public ResponseEntity<?> deleteDashboard(@PathVariable Long dashboardId) {
     dashboardService.deleteDashboard(dashboardId);
     return ResponseEntity.ok().build();
   }
